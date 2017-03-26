@@ -38,6 +38,15 @@ comentmult = \/\*.*?\*\/
 
 //Operadores
 
+"&&"                                {System.out.println("Operador (&&)");}
+"<"                                 {System.out.println("Operador (<)");}
+"=="                                {System.out.println("Operador (==)");}
+"!="                                {System.out.println("Operador (!=)");}
+"+"                                 {System.out.println("Operador (+)");}
+"-"                                 {System.out.println("Operador (-)");}
+"*"                                 {System.out.println("Operador (*)");}
+"!"                                 {System.out.println("Operador (!)");}
+
 //Delimitadores e pontuação
 
 //Identificador
@@ -46,8 +55,8 @@ comentmult = \/\*.*?\*\/
 
 //Comentários e espaços
 
-{espacos}	{}
-{comentsing}	{}
-{comentmult}	{}
+{espacos}                          {}
+{comentsing}                       {}
+{comentmult}                       {}
 
 . { throw new RuntimeException("Caractere ilegal! '" + yytext() + "' na linha: " + yyline + ", coluna: " + yycolumn); }
