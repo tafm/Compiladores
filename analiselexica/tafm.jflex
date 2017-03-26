@@ -8,9 +8,15 @@
 
 //Expressões regulares
 
-espacos = [\n\t\r\f]
+espacos = [ \n\t\r\f]
 comentsing = \/\/.*?\n
 comentmult = \/\*.*?\*\/
+letras = [A-Za-z]
+digitos = [0-9]
+intliteral = {digitos}+
+alfanumerico = {letras}|{digitos}
+id = ({letras}|_)(alfanumerico|_)*
+
 
 %%
 
@@ -49,14 +55,29 @@ comentmult = \/\*.*?\*\/
 
 //Delimitadores e pontuação
 
+";"                                 {System.out.println("Delimitador ou pontuação (;)");}
+"."                                 {System.out.println("Delimitador ou pontuação (.)");}
+","                                 {System.out.println("Delimitador ou pontuação (,)");}
+"="                                 {System.out.println("Delimitador ou pontuação (=)");}
+"("                                 {System.out.println("Delimitador ou pontuação (()");}
+")"                                 {System.out.println("Delimitador ou pontuação ())");}
+"{"                                 {System.out.println("Delimitador ou pontuação ({)");}
+"}"                                 {System.out.println("Delimitador ou pontuação (})");}
+"["                                 {System.out.println("Delimitador ou pontuação ([)");}
+"]"                                 {System.out.println("Delimitador ou pontuação (])");}
+
 //Identificador
+
+{id}                                {System.out.println("Identificador");}
 
 //Literal
 
+{intliteral}                        {System.out.println("Int literal");}
+
 //Comentários e espaços
 
-{espacos}                          {}
-{comentsing}                       {}
-{comentmult}                       {}
+{espacos}                           {}
+{comentsing}                        {}
+{comentmult}                        {}
 
 . { throw new RuntimeException("Caractere ilegal! '" + yytext() + "' na linha: " + yyline + ", coluna: " + yycolumn); }
