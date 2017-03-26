@@ -15,8 +15,7 @@ letras = [A-Za-z]
 digitos = [0-9]
 intliteral = {digitos}+
 alfanumerico = {letras}|{digitos}
-id = ({letras}|_)(alfanumerico|_)*
-
+id = ({letras}|_)({alfanumerico}|_)*
 
 %%
 
